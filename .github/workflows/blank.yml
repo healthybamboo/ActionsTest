@@ -20,12 +20,16 @@ jobs:
       - name: Set up a Git safe directory
         run: git config --global --add safe.directory "${GITHUB_WORKSPACE}"
       - uses: actions/checkout@v3
-      - name: Empty commit
-        run: |
-          git config --global user.email "test@example.com"
-          git config --global user.name "test"
-          git commit --allow-empty -m "test"
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: healthybamboo/issue2branch@main
+        id: iss2br
         with:
           openai_api_key: ${{ secrets.OPENAI_API_KEY }}
+      - name: Comment on Issue with Branch Name
+        run: |
+          BRANCH_NAME=$(echo "${{ steps.iss2br.outputs.result }}")
+          curl -X POST \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github+json" \
+            -d "{\"body\": \"Branch ${BRANCH_NAME} has been created.\"}" \
+            "https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.issue.number }}/comments"
