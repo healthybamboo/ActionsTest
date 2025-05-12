@@ -19,6 +19,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+        with:
+           set-safe-directory: '*'
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: healthybamboo/issue2branch@main
         with:
