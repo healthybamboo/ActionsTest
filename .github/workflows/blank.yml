@@ -17,10 +17,14 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-        with:
-           set-safe-directory: '*'
+      - name: Set up a Git safe directory
+        run: git config --global --add safe.directory "${GITHUB_WORKSPACE}"
+      - uses: actions/checkout@v3
+      - name: Empty commit
+        run: |
+          git config --global user.email "test@example.com"
+          git config --global user.name "test"
+          git commit --allow-empty -m "test"
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: healthybamboo/issue2branch@main
         with:
