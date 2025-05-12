@@ -27,7 +27,7 @@ jobs:
           openai_api_key: ${{ secrets.OPENAI_API_KEY }}
       - name: Comment on Issue with Branch Name
         run: |
-          BRANCH_NAME=$(echo "${{ steps.iss2br.outputs.result }}")
+          BRANCH_NAME=$(echo "${{ steps.iss2br.outputs.branchName }}")
           curl -X POST \
             -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
             -H "Accept: application/vnd.github+json" \
