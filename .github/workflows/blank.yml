@@ -1,6 +1,5 @@
 name: Create Branch from issue
-permissions:
-  issues: write   # Issueにコメントを作成する権限
+permissions: write-all
 # issueがアサインされた時に実行
 on:
   issues:
