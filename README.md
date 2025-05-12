@@ -1,0 +1,2 @@
+# ActionsTest
+GithubActionsの動作確認用のリポジトリ
