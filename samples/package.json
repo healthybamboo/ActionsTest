@@ -1,6 +1,6 @@
 {
     "name": "create_release_pull_request",
-    "version": "1.0.0",
+    "version": "4.0.1",
     "description": "リリース用のプルリクエストを作成するGitHub Actions",
     "type": "commonjs",
     "main": "index.js",
