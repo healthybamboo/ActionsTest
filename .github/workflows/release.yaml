@@ -1,0 +1,33 @@
+name: Release
+permissions: write-all
+on:
+  workflow_dispatch:
+    inputs:
+      release_type:
+        type: choice
+        description: リリースの種類を選択したください
+        default: patch
+        options:
+          - major # 例: 1.0.0 -> 2.0.0
+          - minor # 例: 1.0.0 -> 1.1.0
+          - patch # 例: 1.0.0 -> 1.0.1
+      release_version:
+        description: "例:「1.4.1」のような形式で入力してください。入力した場合はカウントアップが行われません。"
+        type: string
+        required: false
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+        - uses: actions/checkout@v3
+        - uses: healthybamboo/release_pr@create_action
+          id: release_pr
+          with:
+            github_token: ${{ secrets.GITHUB_TOKEN }}
+            release_version: ${{ github.event.inputs.release_version }}
+            release_type: ${{ github.event.inputs.release_type }}
+            
+       
+  
+  
+   
