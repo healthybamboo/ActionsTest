@@ -28,7 +28,7 @@ jobs:
           release_version: ${{ github.event.inputs.release_version }}
           release_type: ${{ github.event.inputs.release_type }}
           build_gradle_file_paths: |
-            - samples/hoge/build.gradle
-            - samples/build.gradle
+            samples/hoge/build.gradle
+            samples/build.gradle
           package_json_file_paths: |
-            - samples/package_json
+            samples/package_json
