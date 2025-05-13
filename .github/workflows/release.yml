@@ -17,3 +17,5 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: healthybamboo/create_release_note@create_action
         id: create_action
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
