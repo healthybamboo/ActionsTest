@@ -1,4 +1,4 @@
-name: Release
+name: Create Release PR
 permissions: write-all
 on:
   workflow_dispatch:
