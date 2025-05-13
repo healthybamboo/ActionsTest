@@ -6,7 +6,7 @@ plugins {
 }
 
 group = 'jp.hoge'
-version = '1.0.0'
+version = '4.0.1'
 
 java {
     toolchain {
