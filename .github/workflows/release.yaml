@@ -20,6 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
         - uses: actions/checkout@v3
+
         - uses: healthybamboo/release_pr@create_action
           id: release_pr
           with:
@@ -27,7 +28,3 @@ jobs:
             release_version: ${{ github.event.inputs.release_version }}
             release_type: ${{ github.event.inputs.release_type }}
             
-       
-  
-  
-   
