@@ -31,4 +31,4 @@ jobs:
             samples/hoge/build.gradle
             samples/build.gradle
           package_json_file_paths: |
-            samples/package_json
+            samples/package.json
