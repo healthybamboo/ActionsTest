@@ -15,7 +15,16 @@ jobs:
     steps: 
       - uses: actions/checkout@v3
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: healthybamboo/create_release_note@create_action
-        id: create_action
+      - uses: healthybamboo/create_release_tag@fix/action
+        id: create_tag
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create release note
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name:  ${{ steps.create_tag.outputs.tag }}
+          draft: false
+          generate_release_notes: true
+          make_latest: true
+
